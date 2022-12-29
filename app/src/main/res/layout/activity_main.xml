@@ -29,6 +29,7 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_margin="24dp"
-        android:src="@drawable/ic_add" />
+        android:src="@drawable/ic_add"
+        android:onClick="openNewTask"/>
 
 </RelativeLayout>
