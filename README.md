@@ -1,7 +1,17 @@
 # To-D0
-Used Room database, Dao, Entity
+A simple application for planning your day! Developed with Kotlin, Android-XML. Used Room.
+
 # Dependency
-to add viewBinding (`build.gradle:app`):
+to add plugins `build.gradle:app`:
+     
+     plugins {
+     
+          ...
+          id 'kotlin-android-extensions'
+          id 'kotlin-kapt'
+     }
+     
+     ...
 
      android {
      
@@ -12,3 +22,16 @@ to add viewBinding (`build.gradle:app`):
           }
   
      }
+     
+     dependencies {
+          
+          ...
+          
+          def room_version = "2.4.3"
+          implementation "androidx.room:room-runtime:$room_version"
+          implementation "androidx.room:room-ktx:$room_version"
+          kapt "androidx.room:room-compiler:$room_version"
+     }
+
+# More
+I got help from https://github.com/tanyagupta0201/ToDo-List-App
