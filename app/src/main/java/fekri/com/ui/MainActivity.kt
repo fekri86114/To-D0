@@ -1,5 +1,6 @@
 package fekri.com.ui
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.graphics.*
 import androidx.appcompat.app.AppCompatActivity
@@ -8,7 +9,6 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.widget.SearchView
-import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -17,19 +17,21 @@ import fekri.com.ux.AppDatabase
 import fekri.com.ux.TodoAdapter
 import fekri.com.ux.TodoModel
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
 
-    val list = arrayListOf<TodoModel>()
+    private val list = arrayListOf<TodoModel>()
     var adapter = TodoAdapter(list)
 
     val db by lazy {
         AppDatabase.getDatabase(this)
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -41,20 +43,21 @@ class MainActivity : AppCompatActivity() {
 
         initSwipe()
 
-        db.todoDao().getTask().observe(this, Observer {
+        db.todoDao().getTask().observe(this) {
             if (!it.isNullOrEmpty()) {
                 list.clear()
                 list.addAll(it)
                 adapter.notifyDataSetChanged()
-            }else{
+            } else {
                 list.clear()
                 adapter.notifyDataSetChanged()
             }
-        })
+        }
 
 
     }
 
+    @OptIn(DelicateCoroutinesApi::class)
     fun initSwipe() {
         val simpleItemTouchCallback = object : ItemTouchHelper.SimpleCallback(
             0,
@@ -97,7 +100,7 @@ class MainActivity : AppCompatActivity() {
 
                     if (dX > 0) {
 
-                        icon = BitmapFactory.decodeResource(resources, R.mipmap.ic_launcher_round)
+                        icon = BitmapFactory.decodeResource(resources, R.mipmap.ic_launcher_foreground)
 
                         paint.color = Color.parseColor("#388E3C")
 
@@ -115,7 +118,7 @@ class MainActivity : AppCompatActivity() {
 
 
                     } else {
-                        icon = BitmapFactory.decodeResource(resources, R.mipmap.ic_launcher_round)
+                        icon = BitmapFactory.decodeResource(resources, R.mipmap.ic_launcher_foreground)
 
                         paint.color = Color.parseColor("#D32F2F")
 
@@ -187,18 +190,19 @@ class MainActivity : AppCompatActivity() {
         return super.onCreateOptionsMenu(menu)
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     fun displayTodo(newText: String = "") {
-        db.todoDao().getTask().observe(this, Observer {
-            if(it.isNotEmpty()){
+        db.todoDao().getTask().observe(this) {
+            if (it.isNotEmpty()) {
                 list.clear()
                 list.addAll(
                     it.filter { todo ->
-                        todo.title.contains(newText,true)
+                        todo.title.contains(newText, true)
                     }
                 )
                 adapter.notifyDataSetChanged()
             }
-        })
+        }
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -211,6 +215,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun openNewTask(view: View) {
-        startActivity(Intent(this, TaskActivity::class.java))
+        startActivity(Intent(view.context, TaskActivity::class.java))
     }
 }
