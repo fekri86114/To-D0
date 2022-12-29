@@ -1,5 +1,5 @@
 # To-D0
-A simple application for planning your day! Developed with Kotlin, Android-XML. Used Room.
+A simple application for planning your day! Developed with Kotlin, Android-XML, Calendar, ...
 
 # Dependency
 to add plugins `build.gradle:app`:
@@ -35,3 +35,4 @@ to add plugins `build.gradle:app`:
 
 # More
 I got help from https://github.com/tanyagupta0201/ToDo-List-App
+I updated some part of code
