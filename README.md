@@ -1,6 +1,5 @@
 # To-D0
-A simple application for planning your day! Developed with Kotlin, Android-XML, Calendar, ...
-
+A simple application for planning your day! Developed with Kotlin, Android-XML. Used: RecyclerView, Room(Dao, Datanase, Entity), ...
 # Dependency
 to add plugins `build.gradle:app`:
      
