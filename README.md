@@ -39,6 +39,6 @@ to add plugins `build.gradle:app`:
 # ❕ More
 I got help from https://github.com/tanyagupta0201/ToDo-List-App
 
-I updated some parts of the code. An I used this project for learning and working with Room.
+I updated some parts of code. And I used this project for learning Room and working with Room.
 
 Happy codding!! 😈😄
