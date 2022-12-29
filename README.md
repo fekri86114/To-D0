@@ -5,7 +5,7 @@ to add viewBinding (`build.gradle:app`):
 
 `android {
 
-  ...
+    ...
   
   buildFeatures {
     viewBinding true
