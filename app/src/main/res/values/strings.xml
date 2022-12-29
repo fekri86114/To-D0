@@ -8,4 +8,6 @@
     <string name="what_is_to_be_done">What is to be done?</string>
     <string name="enter_task_title">Enter Task title</string>
     <string name="task_title">Task Title</string>
+    <string name="history">History</string>
+    <string name="search">Search</string>
 </resources>

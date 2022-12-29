@@ -1,4 +1,4 @@
-package fekri.com
+package fekri.com.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
