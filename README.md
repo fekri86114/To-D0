@@ -1,6 +1,7 @@
-# To-D0
+# 📱 To-D0
 A simple application for planning your day! Developed with Kotlin, Android-XML. Used: RecyclerView, Room(Dao, Datanase, Entity), ...
-# Dependency
+
+# 📝 Dependency
 to add plugins `build.gradle:app`:
      
      plugins {
@@ -32,7 +33,9 @@ to add plugins `build.gradle:app`:
           kapt "androidx.room:room-compiler:$room_version"
      }
 
-# More
+# ❕ More
 I got help from https://github.com/tanyagupta0201/ToDo-List-App
 
 I updated some parts of the code. An I used this project for learning and working with Room.
+
+Happy codding!! 😈😄
