@@ -4,9 +4,12 @@ Used Room database, Dao, Entity
 to add viewBinding (`build.gradle:app`):
 
 `android {
+
   ...
+  
   buildFeatures {
     viewBinding true
   }
+  
 }
 `
