@@ -3,13 +3,12 @@ Used Room database, Dao, Entity
 # Dependency
 to add viewBinding (`build.gradle:app`):
 
-`android {
+     android {
      
-     ...
+          ...
   
-  buildFeatures {
-    viewBinding true
-  }
+          buildFeatures {
+               viewBinding true
+          }
   
-}
-`
+     }
