@@ -36,6 +36,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
+
         recyclerview_main_todo.apply {
             layoutManager = LinearLayoutManager(this@MainActivity)
             adapter = this@MainActivity.adapter
@@ -53,7 +54,6 @@ class MainActivity : AppCompatActivity() {
                 adapter.notifyDataSetChanged()
             }
         }
-
 
     }
 
@@ -98,7 +98,7 @@ class MainActivity : AppCompatActivity() {
                     val paint = Paint()
                     val icon: Bitmap
 
-                    if (dX > 0) {
+                    if (dX > 0)  {
 
                         icon = BitmapFactory.decodeResource(resources, R.mipmap.ic_launcher_foreground)
 
@@ -115,7 +115,6 @@ class MainActivity : AppCompatActivity() {
                             itemView.top.toFloat() + (itemView.bottom.toFloat() - itemView.top.toFloat() - icon.height.toFloat()) / 2,
                             paint
                         )
-
 
                     } else {
                         icon = BitmapFactory.decodeResource(resources, R.mipmap.ic_launcher_foreground)
@@ -134,8 +133,8 @@ class MainActivity : AppCompatActivity() {
                             paint
                         )
                     }
-                    viewHolder.itemView.translationX = dX
 
+                    viewHolder.itemView.translationX = dX
 
                 } else {
                     super.onChildDraw(
@@ -150,7 +149,6 @@ class MainActivity : AppCompatActivity() {
                 }
             }
 
-
         }
 
         val itemTouchHelper = ItemTouchHelper(simpleItemTouchCallback)
@@ -158,9 +156,12 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
+
         menuInflater.inflate(R.menu.main_menu, menu)
+
         val item = menu.findItem(R.id.search)
         val searchView = item.actionView as SearchView
+
         item.setOnActionExpandListener(object :MenuItem.OnActionExpandListener{
             override fun onMenuItemActionExpand(item: MenuItem): Boolean {
                 displayTodo()
@@ -173,6 +174,7 @@ class MainActivity : AppCompatActivity() {
             }
 
         })
+
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
             override fun onQueryTextSubmit(query: String?): Boolean {
                 return false
@@ -214,7 +216,7 @@ class MainActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
-    fun openNewTask(view: View) {
-        startActivity(Intent(view.context, TaskActivity::class.java))
+    fun openNewTask(contextView: View) {
+        startActivity(Intent(contextView.context, TaskActivity::class.java))
     }
 }

@@ -1,5 +1,6 @@
 package fekri.com.ui
 
+import android.annotation.SuppressLint
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -13,10 +14,7 @@ import fekri.com.databinding.ActivityTaskBinding
 import fekri.com.ux.AppDatabase
 import fekri.com.ux.TodoModel
 import kotlinx.android.synthetic.main.activity_task.*
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+import kotlinx.coroutines.*
 import java.text.SimpleDateFormat
 import java.util.Calendar
 
@@ -71,6 +69,7 @@ class TaskActivity : AppCompatActivity(), View.OnClickListener {
         }
     }
 
+    @OptIn(DelicateCoroutinesApi::class)
     private fun saveTodo() {
         val category = spinnerCategory.selectedItem.toString()
         val title = titleInpLay.editText?.text.toString()
@@ -105,14 +104,15 @@ class TaskActivity : AppCompatActivity(), View.OnClickListener {
 
             }
 
-        val timePickerDialog = TimePickerDialog(
+        /*val  timePickerDialog =  */TimePickerDialog(
             this, timeSetListener, calendar.get(Calendar.HOUR_OF_DAY),
             calendar.get(Calendar.MINUTE), false
         )
-        timePickerDialog.show()
+            .show()
 
     }
 
+    @SuppressLint("SimpleDateFormat")
     private fun updateTime() {
         val myFormat = "h:mm a"
         val sdf = SimpleDateFormat(myFormat)
@@ -143,6 +143,7 @@ class TaskActivity : AppCompatActivity(), View.OnClickListener {
 
     }
 
+    @SuppressLint("SimpleDateFormat")
     private fun updateDate() {
 
         val myFormat = "EEE, d MM yyyy"

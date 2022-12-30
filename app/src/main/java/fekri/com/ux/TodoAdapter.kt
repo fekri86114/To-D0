@@ -1,5 +1,6 @@
 package fekri.com.ux
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -46,6 +47,7 @@ class TodoAdapter(private val list: List<TodoModel>) :
             }
         }
 
+        @SuppressLint("SimpleDateFormat")
         private fun updateTime(time: Long) {
             //Mon, 5 Jan 2020
             val myformat = "h:mm a"
@@ -54,6 +56,7 @@ class TodoAdapter(private val list: List<TodoModel>) :
 
         }
 
+        @SuppressLint("SimpleDateFormat")
         private fun updateDate(time: Long) {
             //Mon, 5 Jan 2020
             val myformat = "EEE, d MMM yyyy"
