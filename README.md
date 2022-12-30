@@ -1,6 +1,8 @@
 # 📱 To-D0
 A simple application for planning your day! Developed with Kotlin, Android-XML. Used: RecyclerView, Room(Dao, Datanase, Entity), ...
 
+App is Updating...
+
 # ⚡ Get start
 To start or push you can check `master` branch
 
